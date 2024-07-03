@@ -1,0 +1,46 @@
+server:
+  port: 9000
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: customer-service
+          uri: lb://customer-service
+          predicates:
+            - Path=/api/v1/customers/**
+        - id: account-service
+          uri: lb://account-service
+          predicates:
+            - Path=/api/**
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/api/v1/orders/**
+        - id: order-lines-service
+          uri: lb://order-lines-service
+          predicates:
+            - Path=/api/v1/order-lines/**
+        - id: product-service
+          uri: lb://product-service
+          predicates:
+            - Path=/api/v1/products/**
+        - id: payment-service
+          uri: lb://payment-service
+          predicates:
+            - Path=/api/v1/payments/**
+        - id: school-service
+          uri: lb://school-service
+          predicates:
+            - Path=/api/v1/schools/**
+        - id: student-service
+          uri: lb://student-service
+          predicates:
+            - Path=/api/v1/students/**
+        - id: member-service
+          uri: lb://member-service
+          predicates:
+            - Path=/api/**
+
